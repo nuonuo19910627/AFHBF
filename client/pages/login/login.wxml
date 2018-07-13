@@ -1,0 +1,31 @@
+<view class="container"> 
+ <view class="login-icon"> 
+ <image class="login-img" src="../../images/loginLog.jpg"></image> 
+ </view> 
+ <view >
+    <loading hidden="{{showLoading}}">加载中</loading>
+</view>
+ <view class="login-from"> 
+   <form bindsubmit="formSubmit">
+ <!--账号-->
+ <view class="inputView"> 
+  <image class="nameImage" src="../../images/name.png"></image> 
+  <label class="loginLab">账号</label> 
+  <input type="text" class="inputText" name="userName" placeholder="请输入用户名" value="{{userName}}"  bindinput='nameInput'/>
+ </view> 
+ <view class="line"></view> 
+  
+ <!--密码-->
+ <view class="inputView"> 
+  <image class="keyImage" src="../../images/key.png"></image> 
+  <label class="loginLab">密码</label> 
+   <input type="password" class="inputText" name="userPassword" placeholder="请输入密码" value="{{userPassword}}" bindinput='passInput'/>
+ </view> 
+  
+ <!--按钮-->
+ <view class="loginBtnView"> 
+  <button type="primary" class="loginBtn"  form-type="submit"  >登陆</button>
+ </view> 
+  </form>
+ </view> 
+</view>

@@ -1,0 +1,60 @@
+/* pages/toLogin/toLogin.wxss */
+.title1{ 
+  font-size:18px;
+  color:#000000;
+
+}
+/**index.wxss**/
+.userinfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top:20px;
+}
+
+.userinfo-avatar {
+  width: 128rpx;
+  height: 128rpx;
+  margin: 20rpx;
+  border-radius: 50%;
+}
+ 
+.userinfo-nickname {
+  color: #aaa;
+}
+ 
+.userinfo image{
+  width: 200rpx;
+  height: 200rpx;
+  border-radius: 50%;
+}
+ .container image{
+   height:100%;
+   width:100%;
+ }
+.usermotto {
+position:absolute;
+bottom:208px;
+  text-align: center;
+  border-radius: 5px;
+}
+.btn{
+  font-size: 22rpx;
+  font-family: MicroSoft Yahei;
+  font-weight: bold;
+  line-height: 80rpx;
+}
+page{
+  height: 100%;
+  background: #ECF8EB;
+}
+.tip1{
+  font-size: 12rpx;
+  font-family: MicroSoft Yahei;
+  display:none;
+}
+.tip2{
+  font-size: 12rpx;
+  font-family: MicroSoft Yahei;
+  display:none;
+}

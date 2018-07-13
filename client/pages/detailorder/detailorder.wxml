@@ -1,0 +1,62 @@
+<!--pages/order/detail.wxml-->
+<view class="w100">
+		<view class="p_all bg_white df item" wx:for="{{orderData}}">
+			<view class="cp_photo">			
+				<image src="{{item.F_IMAGE}}"></image>
+			</view>
+			<view class="df_1">	
+				<view class="font_14 mt5 ovh1">
+		      {{item.F_NAME}}
+		    </view>
+			  <text class="gm_ovh_1h red pt10">¥{{item.F_JE}}</text>
+			  <view class="sl">
+		        数量：{{item.F_SL}}
+		    </view>
+			</view>
+		</view>		
+		
+		<view class="p_all bg_white mt10 font_14">
+			<view class="df">
+				<view class="df_1 c6">
+				<view class="l_h20">收货人：{{addressData[0].F_NAME}}<text class="fl_r mr10">{{addressData[0].F_PHONE}}</text></view>
+				<view class="l_h20 mt5">地址：{{addressData[0].F_ADDRESS}}</view>
+				</view>
+			</view>
+		</view>	
+
+		<view class="p_all bg_white mt10 c6 l_h20  font_14">
+			<view >
+			订单状态：<text class="red">{{orderData[0].F_DDZT_MC}}</text>
+			</view>
+      <view wx:if="{{orderData[0].F_TKYY != null}}"  >
+			退款原因：<text class="red">{{orderData[0].F_TKYY}}</text>
+			</view>
+			<view >
+			订单编号：{{orderData[0].F_ORDER_ID}}
+			</view>
+			<view class="mt10">
+			订单时间：{{orderData[0].F_DDSJ}}
+			</view>   
+      <view class="mt10" wx:if="{{orderData[0].F_BZ != null&&orderData[0].F_BZ != ''}}">
+			订单备注：{{orderData[0].F_BZ}}
+			</view>         
+		    </view>
+
+  <view class="p_all bg_white mt10 font_14" style='display:none'>
+			<textarea class="min_60" auto-height name="remark" disabled="{{true}}" placeholder="订单备注" value="{{orderData[0].F_BZ?orderData[0].F_BZ:'未备注'}}"/>     
+		</view>	
+	<view class="zhifu mt10 tc">金额：<span class="font_20 red">¥ {{orderData[0].F_ZJE}}</span></view>
+        
+
+	<view class="p_all mt10">
+		<view class="btnGreen">
+    <button class="wx_pay_submit" wx:if="{{F_DDZT==1}}" type="primary" id="wxPay" disabled="{{btnDisabled}}" formType="submit" bindtap="createProductOrderByWX">微信支付</button>
+			<button class="xx_pay_submit"  wx:if="{{F_DDZT==1}}" type="default" id="xxPay" disabled="{{btnDisabled}}" formType="submit" bindtap="createProductOrderByXX">线下支付</button>
+			        <!-- <button type="warn" size="{{warnSize}}" loading="{{loading}}" plain="{{plain}}"
+        disabled="{{disabled}}" bindtap="warn"> 确认 </button> -->
+        		<!--<contact-button type="default-light" session-from="orderNo_{{orderData.OrderNo}}">
+		        客服
+		        </contact-button>-->
+		</view>
+	</view>
+</view>

@@ -1,0 +1,158 @@
+<!--index.wxml-->
+<view class="container">
+    <!-- 用户登录测试 -->
+    <view class="userinfo" bindtap="login">
+        <image
+            class="userinfo-avatar"
+            src="{{logged ? userInfo.avatarUrl : './user-unlogin.png'}}"
+            background-size="cover"
+        ></image>
+        <view>
+            <text class="userinfo-nickname">{{logged ? userInfo.nickName : '点击测试登录接口'}}</text>
+            <text class="userinfo-nickname" wx:if="{{logged}}">{{userInfo.lastLoginTime}}</text>
+        </view>
+    </view>
+
+
+    <!-- 上传图片测试 -->
+    <view class="uploader">
+        <view class="uploader-text" bindtap="doUpload">
+            <text>上传图片</text>
+        </view>
+        <view class="uploader-container" wx:if="{{imgUrl}}">
+            <image
+                class="uploader-image"
+                src="{{imgUrl}}"
+                mode="aspectFit"
+                bindtap="previewImg"
+            ></image>
+        </view>
+    </view>
+
+
+    <!-- 上传图片测试 -->
+    <view class="uploader">
+        <navigator url="../addCgi/addCgi" open-type="navigate" class="uploader-text">
+            <text>快速增加 CGI</text>
+        </navigator>
+    </view>
+
+     <!-- 搜索商品 --> 
+    <view class="uploader">
+        <navigator url="../searchgoods/searchgoods" open-type="navigate" class="uploader-text">
+            <text>搜索商品</text>
+        </navigator>
+    </view>
+</view>
+<view class="main">
+    <swiper indicator-dots="true" autoplay="true" interval="{{interval}}" duration="{{duration}}" circular="true">
+        <block wx:for="{{imgUrls}}" wx:key="{{index}}">
+            <swiper-item>
+                <image src="{{item}}" class="slide-image" width="100%"/>
+            </swiper-item>
+        </block>
+    </swiper>
+    <view class="selected">
+        <view class="select-title"><text>精选主题</text></view>
+        <view class="select-top" style="display:none;">
+            <view class="select-top-small">
+                <navigator url="list/list">
+                    <image src="/images/s1.png"></image>
+                </navigator>
+            </view>
+            <view class="select-top-small">
+                <navigator url="list/list">
+                    <image src="/images/s2.png"></image>
+                </navigator>
+            </view>
+        </view>
+        <view class="select-bottom">
+            <navigator url="list/list">
+                <image src="/images/s3.png"></image>
+            </navigator>
+        </view>
+    </view>
+    <view class="newest">
+        <view class="newest-title"><text>推荐单品</text></view>
+        <view class="newest-box">
+          <view class="newest-list" wx:for="{{goodsList}}" wx:key="unique" data-id="{{item.F_ID}}" >
+             <navigator url="../detailgood/detailgood?F_ID={{item.F_ID}}">
+                <image src="{{item.F_IMAGE}}"></image>
+                <view class="newest-text text1"><text>{{item.F_NAME}} | {{item.F_NOTE}}</text></view>
+                <view class="newest-text"><text class="text2">￥{{item.F_JE}}</text>
+                                          <image class="cart3" id="{{item.F_ID}}" catchtap ="isShow"  src="/images/cart3.png"></image>
+                </view>
+            </navigator>
+          </view>
+          
+        <!--
+            <view class="newest-list">
+                <navigator url="details/details">
+                    <image src="/images/s6.png"></image>
+                    <view class="newest-text"><text>素米 375g</text></view>
+                    <view class="newest-text"><text>￥ 0.03</text></view>
+                </navigator>
+            </view> -->
+        </view>
+    </view>
+</view>
+
+<block wx:if="{{isShow}}">
+<view class="drawer_screen" ></view>
+<view  class="drawer_attr_box"  wx:for="{{onegood}}" wx:key="unique" data-id="{{item.F_ID}}" >
+<view class="close_icon" bindtap="isClose">×</view>
+  <view class="drawer_attr_content">
+    <view class="text_center">
+         <image class="drawer_image" src="{{item.F_IMAGE}}" ></image>
+         <view class="mingcheng">
+             <view>{{item.F_NAME}}|{{item.F_NOTE}}</view>
+             <view style="font-size:29rpx;color:red">¥ {{item.F_JE}}</view>
+             <view  style="font-size:26rpx;color:#ccc">库存：{{item.F_KC}}</view>
+         </view>
+    </view>
+      <view class="shu">
+        <text class="cun">购买数量</text>
+       <view class="dian">
+        <view class="stepper">
+
+       <!-- 减号 -->
+       <text class="{{minusStatuses[index]}}" data-alpha-beta="0" bindtap="changeNum">-</text>
+       <!-- 数值 -->
+       <view class="nownum">{{buynum}}</view>
+       <!-- 加号 -->
+       <text class="normal" data-alpha-beta="1" bindtap="changeNum">+</text>
+      </view>
+      </view>
+   </view>
+   <view class="footc" bindtap="tocart" >
+确认
+</view>
+  </view>
+</view>
+</block>
+<!--
+		<view class="add_item_show">
+			<view class="buy_cont">
+				<view class="shopcar" wx:for="{{onegood}}" wx:key="unique" data-id="{{item.F_ID}}">
+					<view class="shopcar_top">
+						<view class="pro_pic">	<image src="{{item.F_IMAGE}}"></image>	</view>
+            <view class="title"><text>{{item.F_NAME}} </text></view>
+						<view class="kucun">	￥{{item.F_JE}}</view>	
+						<view class="close" bindtap="isClose">×</view>
+					</view>
+					<view class="num">
+						<view class="sl">数量：</view>
+						<view class="buynum">
+				            <view class="disnum" data-alpha-beta="0" bindtap="changeNum">-</view>
+				            <view class="nownum">{{buynum}}</view>
+				            <view class="addnum" data-alpha-beta="1" bindtap="changeNum">+</view>
+				          </view>
+					</view>
+				</view>
+				<view class="true_btn" bindtap='tocart'>确认</view>
+			</view>
+		</view>
+     -->
+
+	
+ 

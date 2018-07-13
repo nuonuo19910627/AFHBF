@@ -1,0 +1,19 @@
+   <view class="search_no" style='margin-top:10px;display:none'>
+    <text class='title1'>阿菲烘焙坊，欢迎您</text>
+        <view class="font_14"><image class="scimg" src="/images/search_no.png"></image></view>
+        <text>请点击授权按钮后放心使用，\n您的数据和信息将受到保护(oﾟ▽ﾟ)o</text>
+         <button open-type="getUserInfo" class='wx_pay_submit' type="primary" bindgetuserinfo="login" style='width:180px'>微信授权登录</button> 
+    </view>
+ <view class="container "  style='height:100%'>
+   <image class="" src="../../images/wxsq.jpg" background-size="cover"></image>
+  <view  bindtap="bindViewTap" class="userinfo"  style='display:none'>
+    <image class="userinfo-avatar" src="../../images/afhbf.png" background-size="cover"></image>
+    <text class="userinfo-nickname">阿菲烘焙坊，欢迎您</text>
+    
+  </view>
+  <view class="usermotto">
+  <button open-type="getUserInfo" class='wx_pay_submit' type="primary" bindgetuserinfo="login" style='width:180px'>微信授权登录</button>
+  </view>
+   <text class='tip1'>请点击授权按钮后放心使用，\n您的数据和信息将受到保护(oﾟ▽ﾟ)o</text>
+   <text class='tip2'>@版权所有 阿菲</text>
+</view>

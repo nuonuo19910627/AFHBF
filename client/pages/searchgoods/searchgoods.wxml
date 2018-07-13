@@ -1,0 +1,27 @@
+<view class="page">
+  <view class='page_row' bindtap="searchssp">
+    <view class="search">
+      <view class="df search_arr">
+        <icon class="searchcion" size='20' type='search'></icon>
+        <input class="" placeholder="请输入关键字" value="{{searchValue}}" />
+      </view>
+    </view>
+    <view class='sousuo'>搜索</view>
+  </view>
+  
+    <view class="page__bd">
+       
+        
+        <view class="weui-cells weui-cells_after-title">
+         <view  class="goodssy" wx:for="{{requestResult1}}" wx:for-index="idx" wx:for-item="itemName">
+        {{idx}}: {{itemName.F_NAME}}
+      </view>
+      
+            <navigator url="" class="weui-cell weui-cell_access" hover-class="weui-cell_active" wx:for="{{requestResult1}}" wx:for-index="idx" wx:for-item="itemName">
+                <view class="weui-cell__bd"> {{idx}}: {{itemName.F_NAME}}</view>
+                <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+            </navigator>
+            
+        </view>    
+    </view>
+</view>

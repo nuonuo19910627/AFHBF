@@ -1,0 +1,54 @@
+{
+  "pages":[
+    "pages/index/index",
+    "pages/mine/mine",
+    "pages/pay/pay",
+    "pages/myorders/myorders",
+    "pages/goods/goods",
+    "pages/login/login",
+    "pages/addCgi/addCgi",
+    "pages/searchuser/searchuser",
+    "pages/searchgoods/searchgoods",
+    "pages/address/address",
+    "pages/address/user-address/user-address",
+    "pages/detailgood/detailgood",
+    "pages/returngood/returngood",
+    "pages/detailorder/detailorder",
+    "pages/toLogin/toLogin"
+  ],
+  "window":{
+    "backgroundColor":"#F6F6F6",
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#F6F6F6",
+    "navigationBarTitleText": "阿菲烘焙坊",
+    "navigationBarTextStyle":"black"
+  },
+  "tabBar": {
+    "color": "#999999",
+    "selectedColor": "#ff2d2e",
+    "backgroundColor": "#fcfcfc",
+    "borderStyle": "white",
+    "position": "bottom",
+    "list": [
+     
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "images/home.png",
+        "selectedIconPath": "images/home_press.png"
+      },
+      {
+        "pagePath": "pages/goods/goods",
+        "text": "购物车",
+        "iconPath": "images/pro.png",
+        "selectedIconPath": "images/pro_press.png"
+      },
+      {
+        "pagePath": "pages/mine/mine",
+        "text": "我的",
+        "iconPath": "images/mine.png",
+        "selectedIconPath": "images/mine_press.png"
+      }
+    ]
+  }
+}

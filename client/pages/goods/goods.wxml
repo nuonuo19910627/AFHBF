@@ -1,0 +1,34 @@
+<view class="main">
+    <view wx:if="{{hasList}}">
+        <view class="cart-box">
+            <view class="cart-list" wx:for="{{carts}}" wx:key="{{index}}">
+                <icon wx:if="{{item.selected}}" type="success" color="red" data-index="{{index}}"  class="cart-pro-select" bindtap="selectList"/>
+                <icon wx:else type="circle" class="cart-pro-select" data-index="{{index}}" bindtap="selectList"/>
+                <navigator url="../details/details?id={{item.id}}"><image class="cart-thumb" src="{{item.image}}"></image></navigator>
+                <text class="cart-pro-name">{{item.title}}</text>
+                <text class="cart-pro-price">￥{{item.price}}</text>
+                <view class="cart-count-box">
+                    <text class="cart-count-down" bindtap="minusCount" data-obj="{{obj}}" data-index="{{index}}">-</text>
+                    <text class="cart-count-num">{{item.num}}</text>
+                    <text class="cart-count-add" bindtap="addCount" data-index="{{index}}">+</text>
+                </view>
+                <image class="cart-del" src="../../images/del.png" bindtap="deleteList" data-index="{{index}}"></image>
+               
+            </view>
+        </view>
+
+        <view class="cart-footer">
+            <view class="all1-footer">  <icon wx:if="{{selectAllStatus}}"  type="success" color="red"   class="cart-pro-select cart-pro-select1"    bindtap="selectAll"/>
+              <icon wx:else type="circle" class="cart-pro-select cart-pro-select1" bindtap="selectAll"/> <text class="allselect-text">全选</text></view>   
+         
+          <view class="all2-footer"> 
+           
+          <view class="all2-footer-view1"> <text class="cart-toatl-price">合计:￥{{totalPrice}}</text></view>
+        <view class="all2-footer-view2" >  <button  class='jsbtn' bindtap="accountje">结算</button></view>
+          </view>
+        </view>
+    </view>
+    <view wx:else>
+        <view class="cart-no-data">购物车是空的哦~</view>
+    </view>
+</view>
